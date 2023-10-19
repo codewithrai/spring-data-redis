@@ -29,6 +29,11 @@ public class ProductController {
         return productService.findProductById(id);
     }
 
+    @PutMapping("/{id}")
+    public Product update(@PathVariable int id, @RequestBody Product product) throws Exception {
+        return productService.update(id, product);
+    }
+
     @DeleteMapping("/{id}")
     public String delete(@PathVariable int id) {
         return productService.deleteProduct(id);

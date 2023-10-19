@@ -23,9 +23,17 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    @Cacheable(key = "#id", value = "Product", unless = "#result.price > 100000")
+    @Cacheable(key = "#id", value = "Product")
     public Product findProductById(int id) {
         return productRepository.findProductById(id);
+    }
+
+    public Product update(int id, Product request) throws Exception {
+        Product product = productRepository.findProductById(id);
+        if (product == null) {
+            throw new Exception("Product not found");
+        }
+        return productRepository.save(request);
     }
 
     public String deleteProduct(int id) {
