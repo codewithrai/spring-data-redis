@@ -25,7 +25,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product findById(@PathVariable int id) {
+    public Product findById(@PathVariable int id) throws Exception {
         return productService.findProductById(id);
     }
 
@@ -35,7 +35,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable int id) {
+    public String delete(@PathVariable int id) throws Exception {
         return productService.deleteProduct(id);
     }
 
